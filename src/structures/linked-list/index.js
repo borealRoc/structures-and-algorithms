@@ -40,25 +40,28 @@ class LinkedList {
     if (ele == undefined) {
       throw new Error(`undefined cann't be inset into linkedlist`);
     }
-
-    const size = this.size();
-    if (index >= 0 && index <= size) {
-      const node = new Node(ele);
-      if (index === 0) {
-        this.head = node;
-      } else if (index === size) {
-        return this.push(ele);
-      } else {
-        const prev = this.getNode(index - 1);
-        const later = prev.next;
-        prev.next = node;
-        node.next = later;
-      }
-
-      this.length++;
-      return true;
+    console.log("index", index);
+    if (index < 0) {
+      throw new Error(`index should be bigger than 0`);
     }
-    throw new Error(`${index} exceed linkedlist size`);
+    const size = this.size();
+    if (index > size) {
+      throw new Error(`${index} exceed linkedlist size`);
+    }
+
+    const node = new Node(ele);
+    if (index === 0) {
+      node.next = this.head;
+      this.head = node;
+    } else {
+      const prev = this.getNode(index - 1);
+      const later = prev.next;
+      prev.next = node;
+      node.next = later;
+    }
+
+    this.length++;
+    return true;
   }
 
   // 2. 删除元素
@@ -66,17 +69,19 @@ class LinkedList {
   pop() {
     const size = this.size();
     if (size <= 0) {
-      throw new Error(`empty linkedlist cant't be remove any node`);
+      throw new Error(`empty linkedlist cant't be pop`);
     }
 
-    let current = this.head;
     if (size === 1) {
-      current = null;
+      this.head = null;
+    } else {
+      let current = this.head;
+      for (let i = 0; i < size - 2; i++) {
+        current = current.next;
+      }
+      current.next = null;
     }
-    for (let i = 0; i < size - 1; i++) {
-      current = current.next;
-    }
-    current.next = null;
+
     this.length--;
     return true;
   }
@@ -87,17 +92,19 @@ class LinkedList {
     if (size <= 0) {
       throw new Error(`empty linkedlist cant't be remove any node`);
     }
-
     if (index >= size) {
       throw new Error(`${index} should be samller than linkedlist size`);
     }
     if (index < 0) {
       throw new Error(`${index} should be bigger than 0`);
     }
-
-    const prev = this.getNode(index - 1);
-    const later = prev.next.next;
-    prev.next = later;
+    if (index === 0) { 
+        this.head = this.head.next
+    } else {
+        const prev = this.getNode(index - 1);
+        const later = prev.next.next;
+        prev.next = later;
+    }
     this.length--;
     return true;
   }
