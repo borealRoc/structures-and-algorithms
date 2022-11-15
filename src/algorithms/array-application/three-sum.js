@@ -26,15 +26,17 @@ export function threeSum1(arr) {
 export function threeSum2(arr) {
   // 先将数组进行从小到大排序
   arr = arr.sort((a, b) => a - b);
-  console.log("arr", arr);
 
   let res = [];
+  let m = 0;
+  let n = 0;
   const len = arr.length;
+
   let timer = 0;
 
   for (let i = 0; i < len - 2; i++) {
-    let m = i + 1;
-    let n = len - 1;
+    m = i + 1;
+    n = len - 1;
 
     // 如果遇到重复的数字，则跳过
     if (i > 0 && arr[i] === arr[i - 1]) {
@@ -43,6 +45,7 @@ export function threeSum2(arr) {
 
     while (m < n) {
       timer++;
+      
       if (arr[i] + arr[m] + arr[n] < 0) {
         m++;
         //  处理左指针元素重复的情况
