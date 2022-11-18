@@ -35,6 +35,7 @@ export function pickRepeatLinkedlist(l) {
 }
 
 // 3. 删除问题的延伸，借助 dummy 结点：给定一个排序链表，删除所有含有重复数字的结点，只保留原始链表中 没有重复出现的数字
+// dummy 结点：处理掉头结点为空的边界问题
 export function deleteRepeatLinkedlist(l) {
   // 如果链表是空或链表只有一个节点，直接返回
   if (!l || !l.next) {
