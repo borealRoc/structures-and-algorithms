@@ -39,16 +39,12 @@ console.log("链表元素的删除", list);
 const node2 = list.get(2)
 console.log("链表第三个节点是", node2);
 
-console.log(l, list.head)
-
-import { concatSortedLinkedlist } from "./concat-sorted-linkedlist";
+// 3. 链表单指针法的应用 
+import { concatSortedLinkedlist, pickRepeatLinkedlist,deleteRepeatLinkedlist } from "./single-pointer-method";
 const twoLists = concatSortedLinkedlist(l, list.head);
 console.log("将两个有序链表合并为一个新的有序链表", twoLists);
-
-import { pickRepeatLinkedlist } from "./pick-repeat-linkedlist";
 const nonRepeatLists = pickRepeatLinkedlist(twoLists);
 console.log("有序链表去重", nonRepeatLists);
-
 const list3 = new ListNode(1)
 const list3Node2 = list3.next = new ListNode(1)
 const list3Node3 = list3Node2.next = new ListNode(2)
@@ -56,6 +52,6 @@ const list3Node4 = list3Node3.next = new ListNode(3)
 const list3Node5 = list3Node4.next = new ListNode(4)
 list3Node5.next = new ListNode(4)
 console.log('list3', list3)
-import { deleteRepeatLinkedlist } from "./delete-repeat-linkedlist";
 const emptyRepeatLists = deleteRepeatLinkedlist(list3)
 console.log('有序链表清空重复节点', emptyRepeatLists)
+
