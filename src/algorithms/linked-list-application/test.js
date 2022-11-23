@@ -50,12 +50,13 @@ const list3Node2 = list3.next = new ListNode(1)
 const list3Node3 = list3Node2.next = new ListNode(2)
 const list3Node4 = list3Node3.next = new ListNode(3)
 const list3Node5 = list3Node4.next = new ListNode(4)
-list3Node5.next = new ListNode(4)
+const list3Node6 = list3Node5.next = new ListNode(4)
+list3Node6.next = new ListNode(4)
 console.log('list3', list3)
 const emptyRepeatLists = deleteRepeatLinkedlist(list3)
 console.log('有序链表清空重复节点', emptyRepeatLists)
 
 // 4. 链表的多指针法的应用
 import { deleteNEnd } from "./mutil-pointer-method";
-const delete2EndList = deleteNEnd(list3, 4)
-console.log('删除链表的倒数第2个结点', delete2EndList)
+// const delete2EndList = deleteNEnd(list3, 4)
+// console.log('删除链表的倒数第2个结点', delete2EndList)

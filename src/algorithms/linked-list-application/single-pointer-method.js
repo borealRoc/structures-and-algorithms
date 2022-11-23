@@ -49,7 +49,13 @@ export function deleteRepeatLinkedlist(l) {
 
   while (cur.next && cur.next.next) {
     if (cur.next.val === cur.next.next.val) {
-      cur.next = cur.next.next.next;
+      // 若值重复，则记下这个值
+      let val = cur.next.val;
+      // 反复地排查后面的元素是否存在多次重复该值的情况
+      while (cur.next && cur.next.val === val) {
+        // 若有，则删除
+        cur.next = cur.next.next;
+      }
     } else {
       cur = cur.next;
     }
